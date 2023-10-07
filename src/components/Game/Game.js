@@ -24,14 +24,8 @@ function Game() {
     // nextGuesses.push(guess);
     // setGuesses(nextGuesses);
     setGuesses([...guesses, guess]);
-  };
 
-  const checkGuessedWord = (guess) => {
-    const result = checkGuess(guess, answer);
-
-    const hasWon = result
-      ? result.every((val) => val.status === "correct")
-      : false;
+    const hasWon = guess === answer;
 
     if (hasWon) {
       setFinished(true);
@@ -41,13 +35,11 @@ function Game() {
     if (guesses.length >= NUM_OF_GUESSES_ALLOWED) {
       setFinished(true);
     }
-
-    return result;
   };
 
   return (
     <>
-      <GuessResults guesses={guesses} checkGuess={checkGuessedWord} />
+      <GuessResults guesses={guesses} answer={answer} />
       <GuessInput addGuess={addGuess} finished={finished} />
       {finished && (
         <Banner won={won} numOfGuesses={guesses.length} answer={answer} />
