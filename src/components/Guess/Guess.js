@@ -8,7 +8,7 @@ function Guess({ guess }) {
       {cellArr.map((letter, idx) => {
         return (
           <span key={idx} className="cell">
-            {letter ?? ""}
+            {letter}
           </span>
         );
       })}
