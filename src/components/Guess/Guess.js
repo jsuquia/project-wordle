@@ -1,11 +1,17 @@
 import React from "react";
 
 function Guess({ guess }) {
+  const cellArr = guess ? [...guess] : new Array(5).fill("");
+
   return (
     <p className="guess">
-      {[...guess].map((letter) => (
-        <span className="cell">{letter}</span>
-      ))}
+      {cellArr.map((letter, idx) => {
+        return (
+          <span key={idx} className="cell">
+            {letter ?? ""}
+          </span>
+        );
+      })}
     </p>
   );
 }
