@@ -20,10 +20,8 @@ function Game() {
   const [won, setWon] = React.useState(false);
 
   const addGuess = (guess) => {
-    // const nextGuesses = [...guesses];
-    // nextGuesses.push(guess);
-    // setGuesses(nextGuesses);
-    setGuesses([...guesses, guess]);
+    const nextGuesses = [...guesses, guess];
+    setGuesses(nextGuesses);
 
     const hasWon = guess === answer;
 
@@ -32,7 +30,7 @@ function Game() {
       setWon(true);
     }
 
-    if (guesses.length >= NUM_OF_GUESSES_ALLOWED) {
+    if (nextGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
       setFinished(true);
     }
   };
